@@ -36,11 +36,8 @@ export default function Home() {
     return () => {
       isCancelled = true;
     };
-  }, [countryCode]);
+  }, [countryCode, country]);
 
-  useEffect(() => {
-    console.log({country})
-  }, [country]);
 
   return (
     <main
