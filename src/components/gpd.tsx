@@ -1,4 +1,4 @@
-import { CountryInterface } from "../../interfaces/country.interface";
+import { CountryInterface } from "../interfaces/country.interface";
 
 export function GDP({ country }: { country: CountryInterface }) {
   return (

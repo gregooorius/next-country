@@ -1,4 +1,4 @@
-import { CountryInterface } from "../../interfaces/country.interface";
+import { CountryInterface } from "../interfaces/country.interface";
 
 export const fetchCountry = async (name: string): Promise<CountryInterface> => {
     const response = await fetch(`https://api.api-ninjas.com/v1/country?name=${name}`, {

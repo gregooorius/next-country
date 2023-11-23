@@ -1,8 +1,8 @@
 import { Inter } from 'next/font/google'
 import { useEffect, useState } from 'react';
-import { fetchCountry } from './api/fetchCountry';
+import { fetchCountry } from '@/api/fetchCountry';
 import { CountryInterface } from '../interfaces/country.interface';
-import { GDP } from './components/gpd';
+import { GDP } from '@/components/gpd';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,12 +13,14 @@ export default function Home() {
   const [country, setCountry] = useState<CountryInterface>();
 
   useEffect(() => {
+    if(country && isLoading) {
+      setCountry(undefined);
+    }
+  }, [country, isLoading])
+
+  useEffect(() => {
     if(!countryCode) {
       return;
-    }
-
-    if(country) {
-      setCountry(undefined);
     }
 
     let isCancelled = false;
@@ -36,7 +38,7 @@ export default function Home() {
     return () => {
       isCancelled = true;
     };
-  }, [countryCode, country]);
+  }, [countryCode]);
 
 
   return (
